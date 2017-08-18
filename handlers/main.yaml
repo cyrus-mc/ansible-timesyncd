@@ -1,0 +1,9 @@
+---                                                                             
+- name: enable-ntp
+  command: timedatectl set-ntp true
+  notify: reload-systemd-timesyncd
+
+- name: reload-systemd-timesyncd
+  systemd:
+    name: systemd-timesyncd
+    daemon_reload: yes
